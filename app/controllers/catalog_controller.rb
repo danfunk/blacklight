@@ -20,11 +20,7 @@ class CatalogController < BlacklightController
   rescue_from RSolr::Error::Http, :with => :rsolr_request_error
 
   # get search results from the solr index
-  def index
-
-    extra_head_content << view_context.auto_discovery_link_tag(:rss, url_for(params.merge(:format => 'rss')), :title => "RSS for results")
-    extra_head_content << view_context.auto_discovery_link_tag(:atom, url_for(params.merge(:format => 'atom')), :title => "Atom for results")
-    
+  def index    
     (@response, @document_list) = get_search_results
     @filters = params[:f] || []
     respond_to do |format|

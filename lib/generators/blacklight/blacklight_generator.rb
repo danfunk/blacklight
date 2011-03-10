@@ -19,6 +19,7 @@ This generator makes the following changes to your application:
  6. Creates a number of public assets, including images, stylesheets, and javascript
  7. Adds a solr_marc.jar file to your lib/ directory 
  8. Modifies your view/layouts/application.html.erb file to support nested layouts.
+ 9. Creates a blacklight layout file - which can then be modified to change the look and feel of the site.
 Thank you for Installing Blacklight.
        """ 
   # Implement the required interface for Rails::Generators::Migration.
@@ -98,6 +99,12 @@ EOF
       puts "     \e[31mFailure\e[0m  Blacklight requires a user object in order to presist bookmarks and saved searches. This generators assumes that the model is defined in the file /app/models/user.rb, which does not exist.  If you used a different name, please re-run the migration and provide that name as an argument. Such as \b  rails -g blacklight client" 
     end    
   end
+
+  # Add a blacklight layout
+  def create_blacklight_layout
+    copy_file "blacklight.html.erb", "app/views/layouts/blacklight.html.erb"
+  end
+
 
   private  
   

@@ -30,10 +30,11 @@ Feature:
        | public/javascripts/jquery-ui-1.8.1.custom.min.js |
        | public/stylesheets/blacklight.css                |
        | public/stylesheets/yui.css                       | 
+       | app/views/layouts/blacklight.html.erb            | 
     And a directory named "public/stylesheets/jquery" should exist
     And the file "app/models/user.rb" should contain "is_blacklight_user"
     
-    # Devise should next exist in thie scenerio
+    # Devise should not exist in thie scenerio
     And a directory named "app/views/devise" should not exist
     And the file "app/models/user.rb" should not contain "devise"
 
